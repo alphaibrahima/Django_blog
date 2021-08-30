@@ -1,0 +1,14 @@
+{% extends "layout/base.html" %} 
+
+ {% block content %}
+ 
+    {% for post in posts %}
+
+      <a href="{{ post.get_absolute_url }}">
+        {{ post.title }}<br>
+      </a>
+      {{ post.Content|safe }}<br>
+      {{ post.author }}<br><br>
+
+    {% endfor %}
+ {% endblock  %}
