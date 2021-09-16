@@ -5,9 +5,40 @@
 {% endblock title %}
 
  {% block content %}
+
+ <div class="container">
+     <div class="row justify-content-md-center pt5">
+
+         <div class="col-md-8">
+
+            <div class="col-12">
+                <div>{{ post.title }}</p> 
+            </div>
+            <div class="col-12">
+               <p>{{ post.Content|safe }}</p> 
+            </div>
+
+            <div class="col-md-12">
+                {% with comments.count as total_comments %}
+                <h2>
+                    {{ total_comments }} comment{{ total_comments|pluralize }}
+                </h2>
+                {% endwith %}
+                {% for comment in comments %}
+                Comment {{ forloop.counter }} by {{ comment.name }} on {{comment.publish}}
+                {{ comment.content |linebreaks }}
+                {% empty %}
+                <p>Y a pas de commentaire </p>
+
+            </div>
+         </div>
+
+
+     </div>
+ </div>
  
-    {{ post.title }}<br>
-    {{ post.Content|safe }}<br>
+    <br>
+    <br>
     {{ post.author }}<br><br>
 
  {% endblock %}
