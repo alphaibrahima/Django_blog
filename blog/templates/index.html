@@ -4,11 +4,16 @@
  
     {% for post in posts %}
 
-      <a href="{{ post.get_absolute_url }}">
-        {{ post.title }}<br>
-      </a>
-      {{ post.Content|safe }}<br>
-      {{ post.author }}<br><br>
+      <div class="container">
+
+        <a href="{{ post.get_absolute_url }}">
+          {{ post.title }}<br>
+        </a>
+        {{ post.Content|safe }}<br>
+        {{ post.author }}<br><br>
+
+      <div>
 
     {% endfor %}
+
  {% endblock  %}

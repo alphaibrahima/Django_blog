@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.expressions import F
+from django.db.models.fields import DateTimeField
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -37,3 +39,21 @@ class Post(models.Model):
     def __str__(self) :
         return self.title
 
+
+
+
+# model pour les commentaire
+
+class Comment(models.Model):
+    post        = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    name        = models.CharField(max_length=50)
+    email       = models.EmailField()
+    content     = models.TextField()
+    publish     = DateTimeField(auto_now_add=True)
+    status      = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ("publish",)
+
+    def __str__(self):
+        return f"Comment by {self.name}"
