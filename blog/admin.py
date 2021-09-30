@@ -2,6 +2,9 @@ from django.contrib import admin
 from . import models
 
 
+
+
+
 # Reorganisation du tableau d'administration des posts
 @admin.register(models.Post)
 class AuthorAdmin(admin.ModelAdmin):
@@ -18,4 +21,4 @@ class AuthorAdmin(admin.ModelAdmin):
     search_fields = ("name", "email", "content")
 
 
-
+admin.site.register(models.Category)
